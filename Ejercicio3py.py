@@ -7,6 +7,7 @@ Created on Thu May 17 18:48:53 2018
 
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.io.wavfile as wav
 
 tiemposignal=2.
 fs=44100./1.
@@ -20,6 +21,7 @@ plt.xlabel(u'Tiempo[s]')
 plt.ylabel(u'f(t)')
 plt.title(u'Coseno muestreado durante 2 segundos')
 plt.show()
+wav.write('coseno.wav',fs,y)#Lo guardamos en un archivo .wav aunque no debería de escucharse nada porque la frecuencia es muy baja
 #B
 Fnss=(np.fft.fft(y))#Obtenemos los valores de los coeficientes de Fourier
 Fn=np.fft.fftshift(Fnss)/sam#Ponemos la componente de frecuencia cero en el medio y normalizamos los valores de Fn dividiendo por el numero de muestras
